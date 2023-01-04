@@ -6,10 +6,11 @@ function Task(props) {
       <input
         type="checkbox"
         checked={todo.done}
+        onChange={() => props.onToggleTodo(todo.id)}
       />
-      <span >
-        {todo.text}
-      </span>
+      <span style={{ textDecoration: todo.done ? 'line-through' : 'none' }}>
+      {todo.text}
+    </span>
     </>
   );
 }

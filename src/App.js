@@ -6,11 +6,22 @@ function App() {
     setTodos([...todos, { id: Date.now(), text, done: false }]);
   };
 
+  const handleToggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, done: !todo.done };
+        }
+        return todo;
+      })
+    );
+  };
+
 
   return (
     <div>
       <AddToDo onAddTodo={handleAddTodo} />
-      <ToDoList todos={todos} />
+      <ToDoList todos={todos} onToggleTodo={handleToggleTodo} />
     </div>
   );
 }
