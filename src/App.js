@@ -42,6 +42,7 @@ function App() {
         {hideDone ? "Show" : "Hide"} Done
       </label>
       <ToDoList todos={filteredTodos} onToggleTodo={handleToggleTodo} />
+      <ToDoFooter todos={filteredTodos}/>
     </div>
   );
 }
