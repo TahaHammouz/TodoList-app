@@ -27,6 +27,10 @@ function App() {
   const handleToggleHideDone = () => {
     setHideDone(!hideDone);
   };
+  const handleDeleteTodo = (idToDelete) =>
+    setTodos((currentTodos) =>
+      currentTodos.filter((todo) => todo.id !== idToDelete)
+    );
 
   return (
     <div>
@@ -41,8 +45,8 @@ function App() {
         />
         {hideDone ? "Show" : "Hide"} Done
       </label>
-      <ToDoList todos={filteredTodos} onToggleTodo={handleToggleTodo} />
-      <ToDoFooter todos={filteredTodos}/>
+      <ToDoList onDelete={handleDeleteTodo} todos={filteredTodos} onToggleTodo={handleToggleTodo} />
+      <ToDoFooter todos={filteredTodos} />
     </div>
   );
 }
