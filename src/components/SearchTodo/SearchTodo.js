@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import styles from "./SearchTodo.module.css";
 function SearchTodo(props) {
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -15,6 +15,8 @@ function SearchTodo(props) {
         value={searchQuery}
         onChange={(event) => setSearchQuery(event.target.value)}
         onKeyUp={handleSubmit}
+        className={styles.searchQuery}
+        placeholder="Search Your To-Do"
       />
     </form>
   );

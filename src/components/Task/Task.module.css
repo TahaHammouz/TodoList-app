@@ -1,0 +1,77 @@
+.done {
+  text-decoration: line-through;
+}
+.checkButton {
+  display: flex;
+  align-items: center;
+
+  
+}
+.deleteButton {
+  grid-area: delete;
+  display: flex;
+  background-color: transparent;
+  border: 0;
+  color: var(--gray-300);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.content {
+  width: 90%;
+  text-align: justify;
+  color: var(--gray-100);
+  overflow: hidden;
+  flex: 1 1 0%;
+}
+
+
+input[type="checkbox"].graphic {
+    display: none;
+}
+ 
+input[type="checkbox"].graphic + label,
+input[type="checkbox"].graphic + label:after {
+    padding: 6px 9px;
+    display: inline-block;
+}
+input[type="checkbox"].graphic + label {
+    position: relative;
+    padding-left: 35px; 
+    color: var(--gray-100);
+    border-radius: 4px;
+    margin: 1px;
+}
+input[type="checkbox"].graphic + label:after {
+    position: absolute;
+    top: -22%;
+    left: -3px;
+    font-size: 180%;
+}
+input[type="checkbox"].graphic + label:hover:after,
+input[type="checkbox"].graphic:checked + label:after {
+    content: '\2714';
+}
+
+input[type="checkbox"].graphic + label:hover:after {
+  text-shadow: 0 0 7px rgba(255,255,255,0.1);
+  color: rgba(0,0,0,0);
+}
+input[type="checkbox"].graphic:checked + label:hover:after {
+  text-shadow: none;
+  color: inherit;
+}
+input[type="checkbox"].graphic + label:hover,
+input[type="checkbox"].graphic:checked + label:hover {
+    border: 1px solid rgba(255,255,255,0.7);
+}
+
+input[type="checkbox"].graphic + label:active,
+input[type="checkbox"].graphic:checked + label:active {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 0 7px 1px rgba(0,0,0,0.5), inset 0px 0 3px 0 rgba(0,0,0,0.4);
+  border: none;
+  margin: 2px;
+}
+input[type="checkbox"].graphic:checked + label {
+  color: rgba(0,0,0,0.9);
+    border: 1px solid #888;
+}

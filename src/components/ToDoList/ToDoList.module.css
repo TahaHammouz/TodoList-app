@@ -1,0 +1,16 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+gap: 0.5rem;
+}
+.task {
+  display: flex;
+  align-items: center;
+  background: var(--gray-400);
+  gap: 0.75rem;
+  border: 1px solid #333333;
+  box-shadow: 0 2px 8px #0000000f;
+  border-radius: 8px;
+  padding: 1rem;
+}

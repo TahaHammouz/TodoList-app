@@ -1,5 +1,12 @@
-import { ToDoList, AddToDo, SearchTodo, ToDoFooter } from "./components/index";
+import {
+  ToDoList,
+  AddToDo,
+  SearchTodo,
+  ToDoFooter,
+  Header,
+} from "./components/index";
 import { useState } from "react";
+import "./App.css";
 function App() {
   const [todos, setTodos] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -33,20 +40,23 @@ function App() {
     );
 
   return (
-    <div>
-      <AddToDo onAddTodo={handleAddTodo} />
+    <div className="wrapper">
+      <Header />
+      <main className="content">
+        <AddToDo onAddTodo={handleAddTodo} />
+        <SearchTodo onSearchTodo={handleSearchTodo} />
+        <button onClick={handleToggleHideDone} className="ToggleHideDonebtn">
+          {hideDone ? "Show" : "Hide"} Done
+        </button>
 
-      <SearchTodo onSearchTodo={handleSearchTodo} />
-      <label>
-        <input
-          type="checkbox"
-          checked={hideDone}
-          onChange={handleToggleHideDone}
+        <ToDoList
+          onDelete={handleDeleteTodo}
+          todos={filteredTodos}
+          onToggleTodo={handleToggleTodo}
         />
-        {hideDone ? "Show" : "Hide"} Done
-      </label>
-      <ToDoList onDelete={handleDeleteTodo} todos={filteredTodos} onToggleTodo={handleToggleTodo} />
-      <ToDoFooter todos={filteredTodos} />
+
+        <ToDoFooter todos={filteredTodos} />
+      </main>
     </div>
   );
 }

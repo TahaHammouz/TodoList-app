@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,100,900;1,200&display=swap");
+* {
+  border: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-size: 1rem;
+  background-color: var(--gray-600);
+  color: var(--gray-100);
+  max-height: 100vh;
+  font-family: Inter, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+body,
+input,
+textarea,
+button {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 736px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+.content {
+  width: 100%;
+  max-width: 736px;
+  margin-top: -1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.3rem;
+  padding: 1rem;
+}
+.hide-done-label {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  color: var(--gray-300);
+}
+
+.hide-done-label input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+.ToggleHideDonebtn{
+  background-color: var(--gray-600);
+  color: var(--gray-300)
+}
+
