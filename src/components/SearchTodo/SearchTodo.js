@@ -9,12 +9,11 @@ function SearchTodo(props) {
   };
 
   return (
-    <form>
+    <form onKeyUp={handleSubmit}>
       <input
         type="text"
         value={searchQuery}
         onChange={(event) => setSearchQuery(event.target.value)}
-        onKeyUp={handleSubmit}
         className={styles.searchQuery}
         placeholder="Search Your To-Do"
       />
