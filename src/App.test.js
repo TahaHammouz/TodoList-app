@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/react";
 import { Header, SearchTodo, AddToDo } from "./components/index";
-
+import preview from "jest-preview";
 describe("Header Component", () => {
   it("Should render the Header component", () => {
     const { getByTestId } = render(<Header />);
@@ -58,5 +58,6 @@ describe("AddTodo", () => {
     fireEvent.click(button);
 
     expect(onAddTodo).toHaveBeenCalledWith("Test Todo");
+    
   });
 });
