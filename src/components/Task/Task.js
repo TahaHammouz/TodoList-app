@@ -12,12 +12,14 @@ function Task(props) {
         aria-pressed={todo.done}
         className={styles.graphic}
         label="Toggle Todo"
+        data-testid="checkbox-todo"
       />
       <label htmlFor={todo.id} className={styles.content}>
         <span
           style={{
             textDecoration: todo.done ? "line-through" : "none",
           }}
+          data-testid="task-text"
         >
           {todo.text}
         </span>
@@ -26,6 +28,7 @@ function Task(props) {
       <button
         className={styles.deleteButton}
         onClick={() => props.delete(todo.id)}
+        data-testid="delete-todo"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

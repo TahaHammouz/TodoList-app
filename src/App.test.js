@@ -1,6 +1,13 @@
 import { render, fireEvent } from "@testing-library/react";
-import { Header, SearchTodo, AddToDo, ToDoList } from "./components/index";
+import {
+  Header,
+  SearchTodo,
+  AddToDo,
+  ToDoList,
+  Task,
+} from "./components/index";
 import preview from "jest-preview";
+
 describe("Header Component", () => {
   it("Should render the Header component", () => {
     const { getByTestId } = render(<Header />);
@@ -77,6 +84,46 @@ describe("Todo List", () => {
     const { getByText } = render(<ToDoList todos={todos} />);
     expect(getByText("test")).toBeInTheDocument();
     expect(getByText("test2")).toBeInTheDocument();
-    preview.debug();
+  });
+});
+describe("Task component", () => {
+  let wrapper;
+  const todo = { id: 1, text: "Test Todo", done: false };
+  const onToggleTodo = jest.fn();
+  const deleteTodo = jest.fn();
+
+  beforeEach(() => {
+    wrapper = render(
+      <Task todo={todo} onToggleTodo={onToggleTodo} delete={deleteTodo} />
+    );
+  });
+
+  it("Should render the task text", () => {
+    const taskText = wrapper.getByText(todo.text);
+    expect(taskText).toBeInTheDocument();
+  });
+
+  it("Should call the onToggleTodo function when checkbox is clicked", () => {
+    const checkbox = wrapper.getByTestId("checkbox-todo");
+    fireEvent.click(checkbox);
+    expect(onToggleTodo).toHaveBeenCalledWith(todo.id);
+  });
+  it("Should call the delete function when the delete button is clicked", () => {
+    const deleteButton = wrapper.getByTestId("delete-todo");
+    fireEvent.click(deleteButton);
+    expect(deleteTodo).toHaveBeenCalledWith(todo.id);
+  });
+  it('Should have the class "done" when the todo is done', () => {
+    wrapper.rerender(
+      <Task
+        key={todo.id}
+        todo={{ ...todo, done: true }}
+        onToggleTodo={onToggleTodo}
+        delete={deleteTodo}
+      />
+    );
+    expect(wrapper.getByTestId("task-text").style.textDecoration).toBe(
+      "line-through"
+    );
   });
 });
