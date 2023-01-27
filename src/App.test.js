@@ -1,5 +1,5 @@
 import { render, fireEvent } from "@testing-library/react";
-import { Header, SearchTodo, AddToDo } from "./components/index";
+import { Header, SearchTodo, AddToDo, ToDoList } from "./components/index";
 import preview from "jest-preview";
 describe("Header Component", () => {
   it("Should render the Header component", () => {
@@ -58,6 +58,25 @@ describe("AddTodo", () => {
     fireEvent.click(button);
 
     expect(onAddTodo).toHaveBeenCalledWith("Test Todo");
-    
+  });
+});
+describe("Todo List", () => {
+  it("Should renders a list of to-do items", () => {
+    const todos = [
+      {
+        id: 1,
+        text: "test",
+        done: false,
+      },
+      {
+        id: 2,
+        text: "test2",
+        done: false,
+      },
+    ];
+    const { getByText } = render(<ToDoList todos={todos} />);
+    expect(getByText("test")).toBeInTheDocument();
+    expect(getByText("test2")).toBeInTheDocument();
+    preview.debug();
   });
 });
