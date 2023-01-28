@@ -1,10 +1,11 @@
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, screen } from "@testing-library/react";
 import {
   Header,
   SearchTodo,
   AddToDo,
   ToDoList,
   Task,
+  ToDoFooter,
 } from "./components/index";
 import preview from "jest-preview";
 
@@ -125,5 +126,31 @@ describe("Task component", () => {
     expect(wrapper.getByTestId("task-text").style.textDecoration).toBe(
       "line-through"
     );
+  });
+});
+describe("ToDoFooter", () => {
+  const todos = [
+    { id: 1, text: "Task 1", done: true },
+    { id: 2, text: "Task 2", done: false },
+    { id: 3, text: "Task 3", done: true },
+  ];
+
+  describe("ToDoFooter component", () => {
+    it("Should display the number of done todos", () => {
+      const { getByText } = render(<ToDoFooter todos={todos} />);
+      const doneTodos = getByText("2 of 3");
+      expect(doneTodos).toBeInTheDocument();
+    });
+
+    it("Should render the correct number of remaining tasks", () => {
+      const { getByText } = render(<ToDoFooter todos={todos} />);
+      const remainingTasks = getByText("1");
+      expect(remainingTasks).toBeInTheDocument();
+    });
+    test("Should render the correct number of created tasks", () => {
+      const { getByText } = render(<ToDoFooter todos={todos} />);
+      const totalCount = getByText("3");
+      expect(totalCount).toBeInTheDocument();
+    });
   });
 });
